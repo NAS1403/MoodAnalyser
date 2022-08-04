@@ -2,7 +2,6 @@ package com.bridgelabz.moodanalysertest;
 
 import com.bridgelabz.moodanalyser.MoodAnalyser;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 public class MoodAnalyserTest {
@@ -21,6 +20,11 @@ public class MoodAnalyserTest {
         String result =  moodAnalyser.analyseMood();
         Assertions.assertSame("HAPPY",result);
     }
+    @Test
+    public void ShouldHandleNullMessage(){
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
+            String result = moodAnalyser.analyseMood();
+            Assertions.assertSame("HAPPY", result);
 
-
+    }
 }
