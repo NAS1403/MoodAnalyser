@@ -9,38 +9,38 @@ public class MoodAnalyserTest {
 
 
     @Test
-    public void shouldReturnSadMood() throws MoodAnalyserException {
+    public void shouldReturnSadMood(){
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am in Sad Mood");
         try {
             String result = moodAnalyser.analyseMood();
             Assertions.assertSame("SAD", result);
         }
         catch(MoodAnalyserException e){
-            throw new MoodAnalyserException(String.valueOf(MoodAnalyser.MoodAnalysr.NULL));
+            Assertions.assertEquals(MoodAnalyserException.ExceptionType.NULL,e.type);
         }
     }
 
     @Test
-    public void shouldReturnHappyMood() throws MoodAnalyserException {
+    public void shouldReturnHappyMood(){
         MoodAnalyser moodAnalyser = new MoodAnalyser("I am in any Mood");
         try {
             String result = moodAnalyser.analyseMood();
             Assertions.assertSame("HAPPY", result);
         }
         catch(MoodAnalyserException e){
-            throw new MoodAnalyserException(String.valueOf(MoodAnalyser.MoodAnalysr.NULL));
+            Assertions.assertEquals(MoodAnalyserException.ExceptionType.NULL,e.type);
 
         }
     }
     @Test
-    public void ShouldHandleNullMessage() throws MoodAnalyserException {
-        MoodAnalyser moodAnalyser = new MoodAnalyser(null);
+    public void ShouldHandleNullMessage() {
+        MoodAnalyser moodAnalyser = new MoodAnalyser();
         try {
             String result = moodAnalyser.analyseMood();
             Assertions.assertSame("HAPPY", result);
         }
         catch(MoodAnalyserException e){
-            Assertions.assertEquals("NULL",String.valueOf(MoodAnalyser.MoodAnalysr.NULL));
+            Assertions.assertEquals("Message is Null",e.getMessage());
         }
 
     }
